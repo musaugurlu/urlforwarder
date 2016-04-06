@@ -22,23 +22,13 @@
         <h3>General</h3>
         <ul class="nav side-menu">
           <li>
-            <a href="{{url('/')}}/"><i class="fa fa-home"></i> Home </a>
+            <a href="{{url('admin')}}/"><i class="fa fa-home"></i> Home </a>
           </li>
           <li>
-            <a href="{{url('/visitors')}}"><i class="fa fa-list-alt"></i> All Visitors </a>
+            <a href="{{url('admin/urls')}}"><i class="fa fa-list-alt"></i> All URLs </a>
           </li>
           <li>
-            <a href="{{url('visitors/new')}}"><i class="fa fa-edit"></i> New Visitor </a>
-          </li>
-          <li>
-            <a href="{{url('/visitors/search')}}"><i class="fa fa-search"></i> Visitor Search </a>
-          </li>
-          <li>
-            <a><i class="fa fa-barcode"></i> Barcode Management <span class="fa fa-chevron-down"></span></a>
-            <ul class="nav child_menu" style="display: none">
-              <li><a href="empty.html">Create New </a></li>
-              <li><a href="empty.html">Find Visitor</a></li>
-            </ul>
+            <a href="{{url('admin/urls/new')}}"><i class="fa fa-edit"></i> New URL </a>
           </li>
         </ul>
       </div>

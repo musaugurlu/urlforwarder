@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>VisitorSYS | @yield('pagetitle')</title>
+    <title>URLForwarder | @yield('pagetitle')</title>
     <!-- Bootstrap core CSS -->
     <link href="{{url('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{url('fonts/css/font-awesome.min.css')}}" rel="stylesheet">
@@ -38,12 +38,13 @@
         <div class="right_col" role="main">
           <div class="">
             @yield('content')
+            </div>
           </div>
           <br />
           <!-- footer content -->
           <footer>
             <div class="copyright-info">
-              <p class="pull-right">Copyright<i class="fa fa-copyright"></i> All right reserved. - VisitorSYS</p>
+              <p class="pull-right">Copyright<i class="fa fa-copyright"></i> All right reserved. - musaugurlu</p>
             </div>
             <div class="clearfix"></div>
           </footer>
