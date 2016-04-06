@@ -22,13 +22,16 @@
         <h3>General</h3>
         <ul class="nav side-menu">
           <li>
-            <a href="{{url('admin')}}/"><i class="fa fa-home"></i> Home </a>
+            <a href="{{url('admin')}}"><i class="fa fa-home"></i> Home </a>
           </li>
           <li>
             <a href="{{url('admin/urls')}}"><i class="fa fa-list-alt"></i> All URLs </a>
           </li>
           <li>
             <a href="{{url('admin/urls/new')}}"><i class="fa fa-edit"></i> New URL </a>
+          </li>
+          <li>
+            <a href="{{url('admin/urls/logs')}}"><i class="fa fa-eye"></i> Logs </a>
           </li>
         </ul>
       </div>

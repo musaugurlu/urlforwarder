@@ -17,4 +17,9 @@ Route::get('/', function () {
 
 Route::auth();
 
-Route::get('/admin', 'HomeController@index');
+Route::get('admin', 'HomeController@index');
+Route::get('admin/urls', 'HomeController@urllist');
+Route::get('admin/urls/new', 'HomeController@create');
+Route::get('admin/urls/logs', 'HomeController@logs');
+
+Route::get('/{url}', 'UrlController@go');

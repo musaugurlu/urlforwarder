@@ -25,5 +25,7 @@ class UrlController extends Controller
                     //show 404 page
             //if unregistered,
                 //check settings, if unregistered urls log is enabled, add ip to visitors db with url
+    
+        return "Working on this :)";
     }
 }

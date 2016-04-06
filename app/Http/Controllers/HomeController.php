@@ -31,4 +31,21 @@ class HomeController extends Controller
         return view('admin.index');
     }
     
+    public function urllist()
+    {
+        $data = [ //Data from DB
+            'data' => 'data'
+            ];
+        return view('admin.urls')->with($data);
+    }
+    
+    public function create()
+    {
+        //
+    }
+    
+    public function logs()
+    {
+        //
+    }
 }
