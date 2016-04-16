@@ -12,10 +12,10 @@ URLs
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
-      <table id="urlstables" class="table table-striped table-bordered bulk_action">
+      <table id="urlstables" class="table table-striped table-bordered">
         <thead>
           <tr class="headings">
-            <th><input type="checkbox" id="check-all" class="flat"></th>
+            <th><input type="checkbox" id="check-all" class="all"></th>
             <th>URL</th>
             <th>Destination</th>
             <th>Date</th>
@@ -28,7 +28,7 @@ URLs
         </thead>
         <tbody>
           <tr>
-            <td><input class="flat" type="checkbox" value="1"></td>
+            <td><input class="check" type="checkbox" value="1"></td>
             <td>/hello-world</td>
             <td>http://google.com</td>
             <td>1/1/2011</td>
@@ -39,7 +39,7 @@ URLs
             <td>None</td>
           </tr>
           <tr>
-            <td><input class="flat" type="checkbox" value="2"></td>
+            <td><input class="check" type="checkbox" value="2"></td>
             <td>/hello-universe</td>
             <td>http://bing.com</td>
             <td>2/2/2012</td>
@@ -109,5 +109,12 @@ URLs
     }();
     TableManageButtons.init();
     $('#urlstables').DataTable();
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#check-all').click(function(){
+      $('input:checkbox').prop('checked', $(this).prop('checked'));
+    });
+  });
 </script>
 @endsection
