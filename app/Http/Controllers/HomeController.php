@@ -49,4 +49,9 @@ class HomeController extends Controller
     {
         //
     }
+    
+    public function store()
+    {
+        return "<p>Will Work On it</p><br /><a href='javascript:history.back()'>Go Back</a>";
+    }
 }

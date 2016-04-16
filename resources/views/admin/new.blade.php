@@ -12,7 +12,8 @@ New URL
       <div class="clearfix"></div>
     </div>
     <div class="x_content">
-       <form class="form-horizontal form-label-left input_mask">
+       <form class="form-horizontal form-label-left input_mask" method="POST" action="{{url('admin/urls/new')}}">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
           <input id="enabled" class="checkbox-custom" name="enabled" type="checkbox" checked>
           <label for="enabled" class="checkbox-custom-label">Enabled</label>

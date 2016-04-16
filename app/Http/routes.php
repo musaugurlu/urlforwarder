@@ -19,7 +19,11 @@ Route::auth();
 
 Route::get('admin', 'HomeController@index');
 Route::get('admin/urls', 'HomeController@urllist');
+
 Route::get('admin/urls/new', 'HomeController@create');
+Route::post('admin/urls/new', 'HomeController@store');
+
 Route::get('admin/urls/logs', 'HomeController@logs');
+
 
 Route::get('/{url}', 'UrlController@go');
