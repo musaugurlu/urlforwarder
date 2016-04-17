@@ -11,6 +11,15 @@ New URL
       <h2>New URL</h2>
       <div class="clearfix"></div>
     </div>
+    @if (count($errors) > 0)
+      <div class="alert alert-danger">
+        <ul>
+          @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+          @endforeach
+        </ul>
+      </div>
+    @endif
     <div class="x_content">
        <form class="form-horizontal form-label-left input_mask" method="POST" action="{{url('admin/urls/new')}}">
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -18,36 +27,40 @@ New URL
           <input id="enabled" class="checkbox-custom" name="enabled" type="checkbox" checked>
           <label for="enabled" class="checkbox-custom-label">Enabled</label>
         </div>
-        
         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-          <input type="text" class="form-control has-feedback-left nuform" id="inputSuccess2" placeholder="/new_url" maxlength="32">
-          <span class="fa fa-link form-control-feedback left" aria-hidden="true"></span>
+          <input type="text" name="link" class="form-control has-feedback-left nuform" id="inputSuccess2" placeholder="new_url" maxlength="32" value="{{ old('link') }}">
+          <span class="fa fa-home form-control-feedback left" aria-hidden="true">/</span>
+          <span class="fa fa-link form-control-feedback right" aria-hidden="true"></span>
         </div>
 
         <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-          <input type="text" class="form-control nuform" id="inputSuccess3" placeholder="http://www.Destination.URL">
+          <input type="text" name="destination" class="form-control nuform" id="inputSuccess3" placeholder="http://www.Destination.URL" value="{{ old('destination') }}">
           <span class="fa fa-external-link form-control-feedback right" aria-hidden="true"></span>
         </div>
         
         <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
           <div class="col-md-2 col-sm-4 col-xs-12">
-            <input id="expires" class="checkbox-custom nuform" name="expires" type="checkbox" checked>
+            <input id="expires" class="checkbox-custom nuform" name="expires" type="checkbox">
             <label for="expires" class="checkbox-custom-label">Expires</label>
           </div>
           <div class="col-md-2">
-            <input id="expires-date" class="radio-custom nuform nueform" name="expires-group" type="radio" checked>
+            <input id="expires-date" class="radio-custom nuform nueform" name="expires_group" type="radio" value="Date" checked>
             <label for="expires-date" class="radio-custom-label">Date</label>
           </div>
           <div class="col-md-2">
-            <input id="expires-click" class="radio-custom nuform nueform" name="expires-group" type="radio">
+            <input id="expires-click" class="radio-custom nuform nueform" name="expires_group" value="Hit" type="radio">
             <label for="expires-click" class="radio-custom-label">Hit</label>
           </div>
         </div>
         <div id="exp-date" class="col-md-12 col-sm-12 col-xs-12">
-          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback">
-            <input type="text" class="form-control has-feedback-left nuform nueform" id="exp-date-i" placeholder="Date">
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" id="exp-date-d">
+            <input type="datetime" id="exp-date-i" name="exp_date" class="form-control has-feedback-left nuform nueform" placeholder="Date">
             <span id="exp-date-s" class="fa fa-clock-o form-control-feedback left" aria-hidden="true"></span>
-          </div>  
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" id="exp-click-d">
+            <input type="text" name="exp_click" class="form-control has-feedback-left nuform nueform" placeholder="Hit">
+            <span id="exp-date-s" class="fa fa-mouse-pointer form-control-feedback left" aria-hidden="true"></span>
+          </div>
         </div>
         
         <p>&nbsp;</p>
@@ -55,7 +68,7 @@ New URL
         <div class="ln_solid"></div>
         <div class="form-group">
           <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-            <button type="submit" class="btn btn-primary">Cancel</button>
+            <a href="{{url('/admin/urls')}}" class="btn btn-primary">Cancel</a>
             <button type="submit" class="btn btn-success">Submit</button>
           </div>
         </div>
@@ -143,9 +156,20 @@ New URL
     });
     if($('#expires').prop('checked')) {
       $('.nueform').prop('disabled','');
+      if($('#expires-date').prop('checked')) {
+        $('#exp-click-d').hide();
+      } else if ($('#expires-click').prop('checked')) {
+         $('#exp-date-d').hide();
+      }
     } else {
       $('.nueform').prop('disabled','disabled');
+      if($('#expires-date').prop('checked')) {
+        $('#exp-click-d').hide();
+      } else if ($('#expires-click').prop('checked')) {
+         $('#exp-date-d').hide();
+      }
     }
+    
     $('#expires').change(function() {
       if($('#expires').prop('checked')) {
         $('.nueform').prop('disabled','');
@@ -154,16 +178,14 @@ New URL
       }
     });
     $('#expires-click').click(function() {
-      $('#exp-date-i').val("");
-      $('#exp-date-s').prop('class', 'fa fa-mouse-pointer form-control-feedback left');
-      $('#exp-date-i').prop('placeholder', 'Hit');
-      $('#exp-date-i').datetimepicker('destroy');
+      $('#exp-date-i').val('');
+      $('#exp-date-d').hide();
+      $('#exp-click-d').show();
     });
     $('#expires-date').click(function() {
-      $('#exp-date-i').val("");
-      $('#exp-date-s').prop('class', 'fa fa-clock-o form-control-feedback left');
-      $('#exp-date-i').prop('placeholder', 'Date');
-      $('#exp-date-i').datetimepicker();
+      $('#exp-click-i').val('');
+      $('#exp-click-d').hide();
+      $('#exp-date-d').show();
     });
   });
 </script>
@@ -172,7 +194,12 @@ New URL
 <script src="{{url('js/jquery.datetimepicker.full.min.js')}}"></script>
 <script>
   $(document).ready(function(){
-    $('#exp-date-i').datetimepicker();
+    $('#exp-date-i').datetimepicker({
+      format: 'm/d/Y H:i',
+    });
   });
+</script>
+<script type="text/javascript">
+
 </script>
 @endsection

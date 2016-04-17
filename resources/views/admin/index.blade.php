@@ -10,7 +10,7 @@ Admin
     <div class="tile-stats">
       <div class="icon"><i class="fa fa-share"></i>
       </div>
-      <div class="count">179</div>
+      <div class="count">{{ $b1data }}</div>
 
       <h3>Total</h3>
       <p>Number of URLs</p>
@@ -20,7 +20,7 @@ Admin
     <div class="tile-stats">
       <div class="icon"><i class="fa fa-check-square-o"></i>
       </div>
-      <div class="count">179</div>
+      <div class="count">{{ $b2data }}</div>
 
       <h3>Enabled</h3>
       <p>Number of URLs</p>
@@ -60,25 +60,29 @@ Admin
           <tr>
             <th>URL</th>
             <th>Destination</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>IP</th>
+            <th>Created Date</th>
+            <th>Enable</th>
+            <th>Expire</th>
+            <th>Expire Type</th>
+            <th>Expire Date</th>
+            <th>Expire Click</th>
             <th>Hit</th>
-            <th>Created at</th>
-            <th>Expiration</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>/hello-world</td>
-            <td>http://google.com</td>
-            <td>1/1/2011</td>
-            <td>11:11:01</td>
-            <td>8.8.8.8</td>
-            <td>519</td>
-            <td>3/1/2016</td>
-            <td>None</td>
-          </tr>
+          @foreach ($urls as $url)
+            <tr>
+            <td>{{$url->link}}</td>
+            <td>{{$url->destination}}</td>
+            <td>{{$url->created_at->format('m/d/Y')}}</td>
+            <td>{{$url->enabled}}</td>
+            <td>{{$url->expires}}</td>
+            <td>{{$url->expires_group}}</td>
+            <td>{{$url->exp_date}}</td>
+            <td>{{$url->exp_click}}</td>
+            <td>{{$url->total_hit}}</td>
+            </tr>
+            @endforeach
         </tbody>
       </table>
     </div>

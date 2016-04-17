@@ -18,12 +18,12 @@ class CreateUrlsTable extends Migration
           $table->string('destination');
           $table->string('enabled');
           $table->string('expires');
-          $table->string('expires-group')->nullable();
-          $table->string('expires-date')->nullable();
-          $table->string('expires-click')->nullable();
-          $table->string('total_hit')->nullable();
+          $table->string('expires_group')->nullable();
+          $table->datetime('exp_date')->nullable();
+          $table->integer('exp_click')->nullable();
+          $table->integer('total_hit')->nullable();
           $table->timestamps();
-        }
+        });
     }
 
     /**

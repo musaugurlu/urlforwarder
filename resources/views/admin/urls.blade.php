@@ -18,38 +18,30 @@ URLs
             <th><input type="checkbox" id="check-all" class="all"></th>
             <th>URL</th>
             <th>Destination</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>IP</th>
+            <th>Created Date</th>
+            <th>Enable</th>
+            <th>Expire</th>
+            <th>Expire Type</th>
+            <th>Expire Date</th>
+            <th>Expire Click</th>
             <th>Hit</th>
-            <th>Created at</th>
-            <th>Expiration</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><input class="check" type="checkbox" value="1"></td>
-            <td>/hello-world</td>
-            <td>http://google.com</td>
-            <td>1/1/2011</td>
-            <td>11:11:01</td>
-            <td>8.8.8.8</td>
-            <td>519</td>
-            <td>3/1/2016</td>
-            <td>None</td>
-          </tr>
-          <tr>
-            <td><input class="check" type="checkbox" value="2"></td>
-            <td>/hello-universe</td>
-            <td>http://bing.com</td>
-            <td>2/2/2012</td>
-            <td>12:12:02</td>
-            <td>4.4.4.4</td>
-            <td>765</td>
-            <td>8/10/2016</td>
-            <td>9/10/2016</td>
-          </tr>
-          
+            @foreach ($urls as $url)
+            <tr>
+            <td><input class="check" type="checkbox" value="{{$url->id}}"></td>
+            <td>{{$url->link}}</td>
+            <td>{{$url->destination}}</td>
+            <td>{{$url->created_at->format('m/d/Y')}}</td>
+            <td>{{$url->enabled}}</td>
+            <td>{{$url->expires}}</td>
+            <td>{{$url->expires_group}}</td>
+            <td>{{$url->exp_date}}</td>
+            <td>{{$url->exp_click}}</td>
+            <td>{{$url->total_hit}}</td>
+            </tr>
+            @endforeach
         </tbody>
       </table>
     </div>
@@ -116,5 +108,10 @@ URLs
       $('input:checkbox').prop('checked', $(this).prop('checked'));
     });
   });
+</script>
+<script type="text/javascript">
+  @if(Session::has('snotify'))
+    alertify.success(Session::get('snotify'));
+  @endif
 </script>
 @endsection

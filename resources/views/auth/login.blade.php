@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>VisitorSYS | Login</title>
+  <title>URLForwarder | Login</title>
 
   <!-- Bootstrap core CSS -->
 
@@ -78,9 +78,9 @@
               <div class="clearfix"></div>
               <br />
               <div>
-                <h1><i class="fa fa-rocket" style="font-size: 26px;"></i> VisitorSYS</h1>
+                <h1><i class="fa fa-rocket" style="font-size: 26px;"></i> URLForwarder</h1>
 
-                <p>©2015 All Rights Reserved. VisitorSYS</p>
+                <p>©2015 All Rights Reserved. URLForwarder</p>
               </div>
             </div>
           </form>
