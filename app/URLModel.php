@@ -16,7 +16,7 @@ class URLModel extends Model
     {
         if (strlen($date))
         {
-            $this->attributes['exp_date'] = \Carbon\Carbon::createFromFormat('d/m/Y H:i', $date);
+            $this->attributes['exp_date'] = \Carbon\Carbon::createFromFormat('m/d/Y H:i', $date);
         } else
         {
             $this->attributes['exp_date'] = null;

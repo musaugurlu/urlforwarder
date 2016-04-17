@@ -57,7 +57,7 @@ New URL
             <input type="datetime" id="exp-date-i" name="exp_date" class="form-control has-feedback-left nuform nueform" placeholder="Date">
             <span id="exp-date-s" class="fa fa-clock-o form-control-feedback left" aria-hidden="true"></span>
           </div>
-          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" id="exp-click-d">
+          <div class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback" id="exp-click-d" style="display:none;">
             <input type="text" name="exp_click" class="form-control has-feedback-left nuform nueform" placeholder="Hit">
             <span id="exp-date-s" class="fa fa-mouse-pointer form-control-feedback left" aria-hidden="true"></span>
           </div>
